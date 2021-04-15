@@ -1,13 +1,18 @@
 class Carnival
-  attr_reader :name, :rides
+  attr_reader :name, :rides, :attendees
 
   def initialize(name)
     @name = name
     @rides = []
+    @attendees = []
   end
 
   def add_ride(ride)
     @rides << ride
+  end
+
+  def admit(person)
+    @attendees << person
   end
 
   def recommend_rides(attendee)
@@ -22,7 +27,7 @@ class Carnival
   # NOTE: The following two helper methods
   # don't have associated tests
   def get_ride_from_name(name)
-    @rides.select do |ride|
+    @rides.find do |ride|
       ride.name == name
     end
   end
@@ -34,6 +39,29 @@ class Carnival
   end
 
   def attendees_by_ride_interest
+    hash = {}
+    @rides.each do |ride|
+      @attendees.each do |attendee|
+        if attendee.interests.include?(get_ride_names)
+          hash[ride] = [attendee]
+        end
+      end
+    end
+    #require 'pry'; binding.pry
+    hash
   end
+
+  def turn_interests_into_rides(interests)
+    accum = []
+    interests.each do |interest|
+      @rides.each do |ride|
+        if interest == ride.name
+          accum << ride
+        end
+      end
+      require 'pry'; binding.pry
+    end
+  end
+
 
 end

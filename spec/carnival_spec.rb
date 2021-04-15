@@ -63,13 +63,20 @@ RSpec.describe Carnival do
     it 'can admit attendees' do
       jeffco_fair.admit(bob)
       jeffco_fair.admit(sally)
-      jeffco_fair.admit(johnny
+      jeffco_fair.admit(johnny)
       expect(jeffco_fair.attendees.length).to eq(3)
     end
-    
-    end
+
     it 'sorts attendees by ride interest' do
-      expect(carnival.attendees_by_ride_interest).to be_instance_of(Hash)
-      expect(carnival.attendees_by_ride_interest[bumper_cars].length).to eq(3)
+      jeffco_fair.admit(bob)
+      jeffco_fair.admit(sally)
+      jeffco_fair.admit(johnny)
+      expect(jeffco_fair.attendees_by_ride_interest).to be_instance_of(Hash)
+      expect(jeffco_fair.attendees_by_ride_interest[bumper_cars].length).to eq(3)
     end
+
+    it 'helps sort attendees by ride interest' do
+      expect(turn_interests_into_rides(sally.interests[0])).to be_instance_of(Ride)
+    end
+  end
 end
