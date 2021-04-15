@@ -10,4 +10,7 @@ class Carnival
     @rides << ride
   end
 
+  def recommend_rides(attendee)
+  end
+
 end
