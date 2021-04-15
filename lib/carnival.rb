@@ -38,16 +38,24 @@ class Carnival
     end
   end
 
+  # NOTE: Method returns duplicate instances of attendees
   def attendees_by_ride_interest
     hash = {}
     @rides.each do |ride|
       @attendees.each do |attendee|
-        if attendee.interests.include?(get_ride_names)
-          hash[ride] = [attendee]
+        attend_intr = turn_interests_into_rides(attendee.interests)
+        if attend_intr.include?(ride)
+          # Should use a different method of checking
+          # whether attendant exists as value instead
+          # of just the key, since keys won't duplicate. 
+          if hash.key?(ride)
+            hash[ride] << attendee
+          elsif
+            hash[ride] = [attendee]
+          end
         end
       end
     end
-    #require 'pry'; binding.pry
     hash
   end
 
