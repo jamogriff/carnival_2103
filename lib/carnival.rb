@@ -52,15 +52,15 @@ class Carnival
   end
 
   def turn_interests_into_rides(interests)
-    accum = []
+    rides = []
     interests.each do |interest|
       @rides.each do |ride|
         if interest == ride.name
-          accum << ride
+          rides << ride
         end
       end
-      require 'pry'; binding.pry
     end
+    rides
   end
 
 

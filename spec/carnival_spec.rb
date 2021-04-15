@@ -76,7 +76,7 @@ RSpec.describe Carnival do
     end
 
     it 'helps sort attendees by ride interest' do
-      expect(turn_interests_into_rides(sally.interests[0])).to be_instance_of(Ride)
+      expect(jeffco_fair.turn_interests_into_rides(sally.interests)[0]).to be_instance_of(Ride)
     end
   end
 end
