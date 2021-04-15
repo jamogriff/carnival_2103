@@ -60,6 +60,14 @@ RSpec.describe Carnival do
     johnny = Attendee.new("Johnny", 5)
     johnny.add_interest('Bumper Cars')
 
+    it 'can admit attendees' do
+      jeffco_fair.admit(bob)
+      jeffco_fair.admit(sally)
+      jeffco_fair.admit(johnny
+      expect(jeffco_fair.attendees.length).to eq(3)
+    end
+    
+    end
     it 'sorts attendees by ride interest' do
       expect(carnival.attendees_by_ride_interest).to be_instance_of(Hash)
       expect(carnival.attendees_by_ride_interest[bumper_cars].length).to eq(3)
