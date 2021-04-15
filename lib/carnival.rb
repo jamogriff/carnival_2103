@@ -33,4 +33,7 @@ class Carnival
     end
   end
 
+  def attendees_by_ride_interest
+  end
+
 end
